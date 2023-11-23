@@ -107,6 +107,10 @@
   fill: var(--background-body)
 }
 
+.header-menu_coffee-logo:hover {
+  cursor: pointer;
+}
+
 .header-description {
   max-width: 1360px;
   margin: 0 40px 0 40px;
