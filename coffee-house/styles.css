@@ -185,6 +185,22 @@
   text-align: center;
 }
 
+.favorite-coffee_slide {
+  flex-direction: column;
+  align-items: center;
+}
+
+.favorite-coffee_img {
+  width: 480px;
+  height: 480px;
+  margin-bottom: 20px;
+}
+
+.favorite-coffee_coffee-name {
+  margin: 0;
+  padding: 0;
+}
+
 .d-flex {
   display: flex;
 }
