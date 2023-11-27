@@ -9,17 +9,9 @@
   --border-light: #C1B6AD;
 }
 
-/*@font-face {
-  font-weight: 400;
-  font-family: Inter;
-  src: url("./static/Inter-Regular.ttf");
+html {
+  scroll-behavior: smooth;
 }
-
-@font-face {
-  font-weight: 600;
-  font-family: Inter;
-  src: url("./static/Inter-Bold.ttf");
-}*/
 
 .container {
   width: 1440px;
@@ -27,6 +19,8 @@
   background-color: var(--background-body);
   flex-direction: column;
   gap: 100px;
+
+  margin: auto;
 
   color: var(--text-dark);
 }
@@ -99,6 +93,20 @@
 .header-menu_nav-link:hover::before {
   opacity: 100;
   width: 100%;
+}
+
+.hover::before {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: -4px;
+  left: 50%;
+  opacity: 1;
+  transition: all 500ms ease-out;
+  transform: translate(-50%);
+  background: #403F3D;
+
+  content: '';
 }
 
 .header-menu_coffee-menu {
@@ -493,6 +501,10 @@
   stroke: #403F3D;
 }
 
+.menu-container {
+  gap: 20px;
+}
+
 .menu {
   flex-direction: column;
   gap: 40px;
@@ -504,6 +516,10 @@
   gap: 40px;
   align-items: center;
   text-align: center;
+}
+
+.menu_header {
+  width: 800px;
 }
 
 .menu_list {
@@ -522,6 +538,15 @@
   border-radius: 100px;
   border: 1px solid var(--border-light);
   background: var(--background-body);
+
+  transition: all .5s ease;
+
+  color: var(--text-dark);
+}
+
+.menu_list-item:hover {
+  background: #665F55;
+  color: var(--text-light);
 }
 
 .menu_item-logo {
@@ -536,6 +561,7 @@
 
 .menu_item-name {
   font: normal 600 16px/24px Inter, sans-serif;
+  margin: 0;
 }
 
 .menu_beverages {
@@ -556,6 +582,11 @@
 
 .menu_beverage-image {
   border-radius: 40px;
+  transition: all 0.3s ease;
+}
+
+.menu_beverage-image:hover {
+  transform: scale(1.05);
 }
 
 .menu_beverage-info {
@@ -574,6 +605,15 @@
 .menu_beverage-description {
   margin-top: 12px;
   margin-bottom: 0;
+}
+
+.menu-main {
+  margin-bottom: 80px;
+}
+
+.item-coffee {
+  background: #665F55;
+  color: var(--text-light);
 }
 
 .active {
