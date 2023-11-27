@@ -4,6 +4,7 @@
   --text-dark: #403F3D;
   --background-body: #E1D4C9;
   --border-dark: #665F55;
+  --border-light: #C1B6AD;
 }
 
 @font-face {
@@ -26,6 +27,11 @@
   gap: 100px;
 
   color: var(--text-dark);
+}
+
+.main {
+  flex-direction: column;
+  gap: 100px;
 }
 
 .header {
@@ -116,7 +122,7 @@
 
 .header-description {
   max-width: 1360px;
-  margin: 0 40px 0 40px;
+  margin: 0 40px;
   padding: 100px;
   flex-direction: column;
   justify-content: center;
@@ -183,7 +189,9 @@
 
 .section-header {
   color: var(--text-dark);
-  font: normal 600 60px/125% Inter, sans-serif;
+  font: normal 600 60px/75px Inter, sans-serif;
+
+  margin: 0;
 }
 
 .favorite-coffee_slider-container {
@@ -237,16 +245,24 @@
   margin-bottom: 20px;
 }
 
-.favorite-coffee_coffee-name {
+.favorite-coffee_coffee-name,
+.menu_beverage-name {
   margin: 0;
   padding: 0;
+  font: normal 600 24px/30px Inter, sans-serif;
 }
 
-.favorite-coffee_coffee-description {
+.favorite-coffee_coffee-description,
+.menu_beverage-description {
   font: normal 400 16px/24px Inter, sans-serif;
 }
 
-.favorite-coffee_coffee-price {
+.favorite-coffee_coffee-description {
+  width: 480px;
+}
+
+.favorite-coffee_coffee-price,
+.menu_beverage-price {
   font: normal 600 24px/30px Inter, sans-serif;
 }
 
@@ -402,6 +418,88 @@
   background: var(--background-body);
 }
 
+.menu {
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 40px;
+}
+
+.menu_offer {
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+.menu_list {
+  flex-direction: row;
+  gap: 16px;
+}
+
+.menu_list-item {
+  flex-direction: row;
+  gap: 8px;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 16px 8px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--border-light);
+  background: var(--background-body);
+}
+
+.menu_item-logo {
+  padding: 3px 7px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 100px;
+  background-color: var(--background-body);
+  font: normal 600 16px/24px Inter, sans-serif;
+}
+
+.menu_item-name {
+  font: normal 600 16px/24px Inter, sans-serif;
+}
+
+.menu_beverages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.menu_beverage {
+  flex-direction: column;
+
+  border: 1px solid var(--border-light);
+  border-radius: 40px;
+
+  height: 506px;
+}
+
+.menu_beverage-image {
+  border-radius: 40px;
+}
+
+.menu_beverage-info {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+
+  height: 100%;
+}
+
+.menu_beverage-price {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.menu_beverage-description {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
 .active {
   transition: all 500ms ease-out;
 }
