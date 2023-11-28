@@ -573,6 +573,8 @@ html {
   color: var(--text-dark);
 
   box-sizing: border-box;
+
+  cursor: default;
 }
 
 .menu_list-item:hover {
@@ -645,6 +647,8 @@ html {
 .item-coffee {
   background: #665F55;
   color: var(--text-light);
+
+  cursor: default;
 }
 
 .active {
