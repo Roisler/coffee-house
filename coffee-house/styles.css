@@ -9,6 +9,9 @@
   --border-light: #C1B6AD;
 }
 
+body {
+  background-color: var(--background-body);
+}
 html {
   scroll-behavior: smooth;
 }
@@ -16,7 +19,6 @@ html {
 .container {
   width: 1440px;
   padding: 20px 0 40px 0;
-  background-color: var(--background-body);
   flex-direction: column;
   gap: 100px;
 
@@ -76,6 +78,7 @@ html {
   text-decoration: none;
 }
 
+.footer_contact:nth-child(-n + 2)::before,
 .header-menu_nav-link::before {
   position: absolute;
   height: 2px;
@@ -90,6 +93,11 @@ html {
   content: '';
 }
 
+.footer_contact:nth-child(-n + 2):before {
+  background: var(--text-light);
+}
+
+.footer_contact:hover::before,
 .header-menu_nav-link:hover::before {
   opacity: 100;
   width: 100%;
@@ -169,9 +177,9 @@ html {
 .enjoy_menu {
   width: 200px;
   padding: 20px 70px;
-  justify-content: center;
-  align-items: center;
 
+  text-decoration: none;
+  color: var(--text-dark);
   background: var(--background-body);
 
   border-radius: 100px;
@@ -181,6 +189,26 @@ html {
   color: var(--text-dark);
 
   text-align: center;
+
+  box-sizing: border-box;
+}
+
+.enjoy_menu:hover span {
+  transform: translate(-10px);
+}
+
+.enjoy_menu span {
+  transition: all .5s ease;
+}
+
+.enjoy_menu svg {
+  visibility: hidden;
+  transition: transform .2s ease;
+}
+
+.enjoy_menu:hover svg {
+  visibility: visible;
+  transform: translate(-5px);
 }
 
 .favorite-coffee {
@@ -472,6 +500,7 @@ html {
 .footer_contact {
   flex-direction: row;
   gap: 4px;
+  position: relative;
 
   justify-content: flex-start;
   align-items: center;
@@ -542,6 +571,8 @@ html {
   transition: all .5s ease;
 
   color: var(--text-dark);
+
+  box-sizing: border-box;
 }
 
 .menu_list-item:hover {
