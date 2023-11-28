@@ -616,7 +616,7 @@ html {
   transition: all 0.3s ease;
 }
 
-.menu_beverage-image:hover {
+.menu_beverage:hover .menu_beverage-image {
   transform: scale(1.05);
 }
 
