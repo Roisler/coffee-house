@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coffee House. Week 1</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="media.css">
   <link type="image/png" rel="icon" href="icon.png">
 </head>
 <body class="m-0">
@@ -14,6 +15,14 @@
         <div class="header-menu_container d-flex">
           <div class="header-menu_logo d-flex">
             <img src="static/images/logo.svg" alt="Logotype cafe Coffee House">
+          </div>
+          <div class="header-menu_burger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+              <path d="M1 1H17" stroke="#403F3D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+              <path d="M1 1H17" stroke="#403F3D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
           <div class="header-menu_nav d-flex">
             <div class="header-menu_nav-item">
@@ -74,14 +83,14 @@
                   an espresso and mixes it with brown sugar and cinnamon before being topped with oat milk.</p>
                 <div class="favorite-coffee_coffee-price">$5.50</div>
               </div>
-              <div class="favorite-coffee_slide">
+              <div class="favorite-coffee_slide d-none">
                 <img class="favorite-coffee_img" src="./static/images/macciato.png" alt="Image machiato coffee">
                 <p class="favorite-coffee_coffee-name">Caramel Macchiato</p>
                 <p class="favorite-coffee_coffee-description">Fragrant and unique    
                   classic espresso with rich caramel-peanut syrup, with cream under whipped thick foam.</p>
                 <div class="favorite-coffee_coffee-price">$5.00</div>
               </div>
-              <div class="favorite-coffee_slide">
+              <div class="favorite-coffee_slide d-none">
                 <img class="favorite-coffee_img" src="./static/images/ice-coffee.png" alt="Image ice coffee">
                 <p class="favorite-coffee_coffee-name">Ice coffee</p>
                 <p class="favorite-coffee_coffee-description">A popular summer drink    
@@ -112,13 +121,21 @@
           <h2 class="section-header">Resource is <span class="text-accent text-italic">the perfect and cozy place</span> where you can enjoy    
             a variety of hot beverages, relax, catch up with friends, or get some work done.</h2>
           <div class="about_blocks d-flex">
-            <div class="about_images-block d-flex">
-              <img class="about_image" src="./static/images/about-1.png" alt="Photo of a girl with coffee">
-              <img class="about_image" src="./static/images/about-2.png" alt="Evening mug photography">
+            <div class="about_images-block block-1 d-flex">
+              <div class="about_image-wrapper">
+                <img class="about_image" src="./static/images/about-1.jpg" alt="Photo of a girl with coffee">
+              </div>
+              <div class="about_image-wrapper">
+                <img class="about_image" src="./static/images/about-2.png" alt="Evening mug photography">  
+              </div>
             </div>
-            <div class="about_images-block d-flex">
-              <img class="about_image image-resize" src="./static/images/about-3.png" alt="Photo of a man with coffee">
-              <img class="about_image" src="./static/images/about-4.png" alt="Photo of a couple in love with coffee">
+            <div class="about_images-block block-2 d-flex">
+              <div class="about_image-wrapper">
+                <img class="about_image" src="./static/images/about-3.png" alt="Photo of a man with coffee">
+              </div>
+              <div class="about_image-wrapper">
+                <img class="about_image" src="./static/images/about-4.png" alt="Photo of a couple in love with coffee">
+              </div>
             </div>
           </div>
         </div>
