@@ -14,6 +14,8 @@
 
   .enjoy {
     padding: 100px 60px;
+
+    background-position: center;
   }
 
   .enjoy_container {
@@ -28,20 +30,66 @@
     width: 100%;
   }
 
-  .block-1 .about_image-wrapper:nth-child(2) {
+  .block-1 .image-wrapper:nth-child(2) {
     display: none;
   }
   
-  .block-2 .about_image-wrapper:nth-child(1) {
+  .block-2 .image-wrapper:nth-child(1) {
     display: none;
   }
 
   .about_blocks {
     flex-direction: column;
+    
   }
 
   .footer-container {
     flex-direction: column;
     padding: 100px 60px;
   }
+
+  .menu_beverages {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .menu_beverage {
+    max-width: 310px;
+    max-height: 504px;
+  }
+
+  .menu_beverage:nth-child(n + 5) {
+    display: none;
+  }
+
+  .menu_beverage:nth-child(odd) {
+    justify-self: end;
+  }
+
+  .menu_refresh {
+    display: flex;
+    align-self: center;
+  }
+}
+
+/*@media (max-width: 767px) {
+  .section-header {
+    font-size: calc(32px + 28 * (100vw - 380px) / 767);
+    line-height: 1.25;
+  }
+
+  .enjoy_coffee {
+    font-size: calc(42px + 25 * (100vw - 380px) / 1440);
+    line-height: 1.15;
+
+    text-shadow: none;
+  }
+}*/
+
+@media (max-width: 536px) {
+  .enjoy {
+    padding: 60px 16px;
+  }
+
+
 }

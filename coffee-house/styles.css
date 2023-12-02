@@ -21,7 +21,7 @@ html {
 }*/
 
 .container {
-  width: 100vw;
+  width: 100%;
   padding: 20px 0 40px 0;
   flex-direction: column;
   gap: 100px;
@@ -34,12 +34,16 @@ html {
 .main {
   flex-direction: column;
   gap: 100px;
+
+  width: 100%
 }
 
 .header {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+
+  width: 100%;
 }
 
 .header-menu {
@@ -55,6 +59,8 @@ html {
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+
+  width: 100%;
 }
 
 .header-menu_logo {
@@ -231,6 +237,8 @@ html {
   flex-direction: column;
   align-items: center;
   align-self: stretch;
+
+  box-sizing: border-box;
 }
 
 .favorite-coffee_container {
@@ -265,6 +273,8 @@ html {
   align-items: center;
   flex: 1 0 auto;
   overflow: hidden;
+
+  width: 100%;
 }
 
 .favorite-coffee_slide {
@@ -272,7 +282,7 @@ html {
   flex-direction: column;
   flex: 1 0 100%;
   align-items: center;
-  width: 480px;
+  width: 100%;
   text-align: center;
   color: var(--text-dark);
 }
@@ -324,6 +334,7 @@ html {
 .favorite-coffee_coffee-description,
 .menu_beverage-description {
   font: normal 400 16px/24px Inter, sans-serif;
+  width: 100%;
 }
 
 .favorite-coffee_coffee-description {
@@ -374,18 +385,35 @@ html {
   gap: 40px;
   align-items: flex-start;
 
-  flex: 1 0 50%;
+  flex: 1 1 50%;
 }
 
-.about_image-wrapper {
+.image-wrapper {
   overflow: hidden;
 }
 
+.image-wrapper2 {
+  width: 100%;
+  height: 430px;
+  background: url('./static/images/about-2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.image-wrapper2:hover {
+  background-size:auto;
+}
+
 .about_image {
+  display: block;
   border-radius: 20px;
   transition: all .5s;
-  width: 100%;
   height: auto;
+  width: 100%;
 }
 
 /*.about_image:hover {
@@ -401,13 +429,15 @@ html {
   gap: 100px;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
 }
 
 .mobile-apps_container img {
   width: 50%;
   height: auto;
 
-  flex: 1 1 50%;
+  flex: 0 1 50%;
 }
 
 .mobile-apps_offer {
@@ -416,7 +446,7 @@ html {
   align-items: flex-start;
   justify-content: center;
 
-  flex: 1 1 50%;
+  flex: 0 1 50%;
 }
 
 .mobile-apps_description {
@@ -568,6 +598,9 @@ html {
   flex-direction: column;
   gap: 40px;
   padding: 0 40px;
+
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .menu_offer {
@@ -575,10 +608,12 @@ html {
   gap: 40px;
   align-items: center;
   text-align: center;
+
+  max-width: 100%;
 }
 
 .menu_header {
-  width: 800px;
+  max-width: 800px;
 }
 
 .menu_list {
@@ -632,6 +667,8 @@ html {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 40px;
+
+  max-width: 100%;
 }
 
 .menu_beverage {
@@ -639,17 +676,22 @@ html {
 
   border: 1px solid var(--border-light);
   border-radius: 40px;
+  height: 504px;
+  width: auto;
 
-  height: 506px;
+  overflow: hidden;
 }
 
 .menu_beverage-image {
+  display: block;
   border-radius: 40px;
   transition: all 0.3s ease;
+  width: 100%;
+  height: auto;
 }
 
 .menu_beverage:hover .menu_beverage-image {
-  transform: scale(1.05);
+  transform: scale(0.9);
 }
 
 .menu_beverage-info {
@@ -668,6 +710,18 @@ html {
 .menu_beverage-description {
   margin-top: 12px;
   margin-bottom: 0;
+}
+
+.menu_refresh {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border-dark);
+  border-radius: 100px;
 }
 
 .menu-main {
