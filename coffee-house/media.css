@@ -1,3 +1,39 @@
+@media (max-width: 1200px) {
+  .menu_beverages {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .menu_beverage:nth-child(n + 7) {
+    display: none;
+  }
+
+  .menu_refresh {
+    display: flex;
+    align-self: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu_beverages {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .menu_beverage {
+    max-width: 310px;
+    max-height: 504px;
+  }
+
+  .menu_beverage:nth-child(n + 5) {
+    display: none;
+  }
+
+  .menu_beverage:nth-child(odd) {
+    justify-self: end;
+  }
+}
+
 @media (max-width: 768px) {
   .header-menu_container {
     justify-content: space-between;
@@ -22,12 +58,12 @@
     width: 100%;
   }
 
-  .mobile-apps_container {
-    flex-direction: column;
+  .enjoy_menu svg {
+    visibility: visible;
   }
 
-  .mobile-apps_container img {
-    width: 100%;
+  .mobile-apps_container {
+    flex-direction: column;
   }
 
   .block-1 .image-wrapper:nth-child(2) {
@@ -48,48 +84,170 @@
     padding: 100px 60px;
   }
 
-  .menu_beverages {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-
-  .menu_beverage {
-    max-width: 310px;
-    max-height: 504px;
-  }
-
-  .menu_beverage:nth-child(n + 5) {
-    display: none;
-  }
-
-  .menu_beverage:nth-child(odd) {
-    justify-self: end;
-  }
-
-  .menu_refresh {
-    display: flex;
-    align-self: center;
-  }
 }
 
-/*@media (max-width: 767px) {
+@media (max-width: 720px) {
   .section-header {
-    font-size: calc(32px + 28 * (100vw - 380px) / 767);
+    font-size: calc(32px + 28 * (100vw - 380px) / 690);
     line-height: 1.25;
   }
 
   .enjoy_coffee {
-    font-size: calc(42px + 25 * (100vw - 380px) / 1440);
+    font-size: calc(42px + 25 * (100vw - 380px) / 690);
     line-height: 1.15;
 
     text-shadow: none;
   }
-}*/
+
+  .favorite-coffee_button-control {
+    display: none;
+  }
+
+  .mobile-apps_image {
+    width: 348px;
+    height: 348px;
+  }
+}
 
 @media (max-width: 536px) {
   .enjoy {
     padding: 60px 16px;
+    margin: 0 16px;
   }
 
+  .footer {
+    margin: 0 16px;
+  }
 
+  .footer-container {
+    padding: 60px 16px;
+
+    gap: 40px;
+  }
+
+  .header-menu,
+  .favorite-coffee,
+  .about,
+  .mobile-apps,
+  .menu {
+    padding: 0 16px; 
+  }
+
+  .mobile-apps_container {
+    gap: 40px;
+  }
+
+  .mobile-apps_buttons-block {
+    flex-direction: column;
+  }
+
+  .favorite-coffee_img {
+    width: 100%;
+    height: auto;
+  }
+
+  .menu_beverages {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .menu_beverage,
+  .menu_beverage:nth-child(odd) {
+    justify-self: center;
+  }
+
+  .menu_list {
+    gap: 8px;
+  }
+
+  .menu_list-item {
+    box-sizing: border-box;
+  }
+}
+
+@media (hover: hover) {
+  .about_image {
+    transform: scale(1.1);
+    transition: transform .5s ease;
+    cursor: pointer;
+  }
+
+  .footer_contact:nth-child(-n + 2)::before,
+  .header-menu_nav-link::before {
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: -4px;
+    left: 50%;
+    opacity: 0;
+    transition: all 500ms ease-out;
+    transform: translate(-50%);
+    background: #403F3D;
+
+    content: '';
+  }
+
+  .footer_contact:nth-child(-n + 2):before {
+    background: var(--text-light);
+  }
+  
+  .footer_contact:hover::before,
+  .header-menu_nav-link:hover::before {
+    opacity: 100;
+    width: 100%;
+  }
+
+  .header-menu_coffee-logo:hover {
+    cursor: pointer;
+  }
+
+  .enjoy_menu:hover span {
+    transform: translate(-10px);
+  }
+
+  .enjoy_menu:hover svg {
+    visibility: visible;
+    transform: translate(-5px);
+  }
+
+  .favorite-coffee_button-control:hover {
+    background: #665F55;
+  }
+
+  .favorite-coffee_button-control:hover .favorite-coffee_arrow {
+    stroke: #E1D4C9;
+  }
+
+  .about_image:hover {
+    transform: scale(1);
+  }
+
+  .mobile-apps_button:hover {
+    background: var(--border-dark);
+    color: var(--text-light);
+  }
+
+  .mobile-apps_button:hover .mobile-apps_logo {
+    fill: #E1D4C9;
+  }
+
+  .footer_social-link:hover {
+    background: var(--background-body);
+  }
+  
+  .footer_social-link:hover .footer_social-logo {
+    stroke: #403F3D;
+  }
+
+  .menu_list-item:nth-child(n + 2) {
+    cursor: pointer;
+  }
+  .menu_list-item:hover {
+    background: #665F55;
+    color: var(--text-light);
+  }
+
+  .menu_beverage:hover .menu_beverage-image {
+    transform: scale(1);
+  }
 }

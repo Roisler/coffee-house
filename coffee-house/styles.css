@@ -99,31 +99,6 @@ html {
   text-decoration: none;
 }
 
-.footer_contact:nth-child(-n + 2)::before,
-.header-menu_nav-link::before {
-  position: absolute;
-  height: 2px;
-  width: 0;
-  bottom: -4px;
-  left: 50%;
-  opacity: 0;
-  transition: all 500ms ease-out;
-  transform: translate(-50%);
-  background: #403F3D;
-
-  content: '';
-}
-
-.footer_contact:nth-child(-n + 2):before {
-  background: var(--text-light);
-}
-
-.footer_contact:hover::before,
-.header-menu_nav-link:hover::before {
-  opacity: 100;
-  width: 100%;
-}
-
 .hover::before {
   position: absolute;
   height: 2px;
@@ -155,10 +130,6 @@ html {
   fill: var(--background-body);
 }
 
-.header-menu_coffee-logo:hover {
-  cursor: pointer;
-}
-
 .enjoy {
   margin: 0 40px;
   padding: 100px;
@@ -167,7 +138,10 @@ html {
   justify-content: center;
 
   
-  background: url("./static/images/coffee-house-description.jpg"), lightgray 50% / cover no-repeat;
+  background-image: url("./static/images/coffee-house-description.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   
   border-radius: 40px;
 
@@ -199,6 +173,7 @@ html {
   width: 200px;
   padding: 20px 70px;
 
+  gap: 8px;
   text-decoration: none;
   color: var(--text-dark);
   background: var(--background-body);
@@ -209,13 +184,10 @@ html {
   font: normal 600 16px/150% Inter, sans-serif;
   color: var(--text-dark);
 
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 
   box-sizing: border-box;
-}
-
-.enjoy_menu:hover span {
-  transform: translate(-10px);
 }
 
 .enjoy_menu span {
@@ -225,11 +197,8 @@ html {
 .enjoy_menu svg {
   visibility: hidden;
   transition: transform .2s ease;
-}
 
-.enjoy_menu:hover svg {
-  visibility: visible;
-  transform: translate(-5px);
+  overflow: visible;
 }
 
 .favorite-coffee {
@@ -250,7 +219,6 @@ html {
 
   text-align: center;
 }
-
 
 .section-header {
   color: var(--text-dark);
@@ -302,14 +270,6 @@ html {
   transition: all .5s ease-in-out;
 }
 
-.favorite-coffee_button-control:hover {
-  background: #665F55;
-}
-
-.favorite-coffee_button-control:hover .favorite-coffee_arrow {
-  stroke: #E1D4C9;
-}
-
 .control-next {
   right: 0;
 }
@@ -338,7 +298,7 @@ html {
 }
 
 .favorite-coffee_coffee-description {
-  width: 480px;
+  max-width: 480px;
 }
 
 .favorite-coffee_coffee-price,
@@ -390,30 +350,24 @@ html {
 
 .image-wrapper {
   overflow: hidden;
-}
-
-.image-wrapper2 {
-  width: 100%;
-  height: 430px;
-  background: url('./static/images/about-2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  overflow: hidden;
   border-radius: 20px;
+
+  width: 100%;
 }
 
-.image-wrapper2:hover {
-  background-size:auto;
+.image-large {
+  height: 590px;
+}
+
+.image-small {
+  height: 430px;
 }
 
 .about_image {
   display: block;
-  border-radius: 20px;
-  transition: all .5s;
-  height: auto;
+  height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 /*.about_image:hover {
@@ -433,11 +387,17 @@ html {
   width: 100%;
 }
 
-.mobile-apps_container img {
-  width: 50%;
-  height: auto;
+.mobile-apps_container-image {
+  width: 100%;
 
-  flex: 0 1 50%;
+  justify-content: center;
+  align-items: center;
+};
+
+.mobile-apps_image {
+  display: block;
+  width: 630px;
+  height: 630px;
 }
 
 .mobile-apps_offer {
@@ -446,7 +406,7 @@ html {
   align-items: flex-start;
   justify-content: center;
 
-  flex: 0 1 50%;
+  width: 100%;
 }
 
 .mobile-apps_description {
@@ -481,15 +441,6 @@ html {
 .mobile-apps_logo {
   fill: #403F3D;
   transition: all 1s ease;
-}
-
-.mobile-apps_button:hover {
-  background: var(--border-dark);
-  color: var(--text-light);
-}
-
-.mobile-apps_button:hover .mobile-apps_logo {
-  fill: #E1D4C9;
 }
 
 .mobile-apps_available-text {
@@ -564,6 +515,12 @@ html {
 
   justify-content: flex-start;
   align-items: center;
+
+  width: fit-content;
+}
+
+.footer_contact .no-link {
+  gap: 0px;
 }
 
 .footer_contact-header {
@@ -580,14 +537,6 @@ html {
   font: normal 600 16px/24px Inter, sans-serif;
   text-decoration: none;
   color: var(--text-light);
-}
-
-.footer_social-link:hover {
-  background: var(--background-body);
-}
-
-.footer_social-link:hover .footer_social-logo {
-  stroke: #403F3D;
 }
 
 .menu-container {
@@ -619,6 +568,8 @@ html {
 .menu_list {
   flex-direction: row;
   gap: 16px;
+
+  max-width: 100%;
 }
 
 .menu_list-item {
@@ -642,19 +593,22 @@ html {
   cursor: default;
 }
 
-.menu_list-item:hover {
-  background: #665F55;
-  color: var(--text-light);
-}
-
 .menu_item-logo {
+  width: 30px;
+  height: 30px;
   padding: 3px 7px;
   justify-content: center;
   align-items: center;
 
   border-radius: 100px;
-  background-color: var(--background-body);
+  background-image: url("./static/images/coffee.svg");
+
   font: normal 600 16px/24px Inter, sans-serif;
+
+  align-self: center;
+  justify-self: center;
+
+  box-sizing: border-box;
 }
 
 .menu_item-name {
@@ -688,10 +642,6 @@ html {
   transition: all 0.3s ease;
   width: 100%;
   height: auto;
-}
-
-.menu_beverage:hover .menu_beverage-image {
-  transform: scale(0.9);
 }
 
 .menu_beverage-info {
@@ -728,10 +678,9 @@ html {
   margin-bottom: 80px;
 }
 
-.item-coffee {
-  background: #665F55;
+.menu_list-item.active {
+  background: var(--border-dark);
   color: var(--text-light);
-
   cursor: default;
 }
 
