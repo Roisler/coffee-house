@@ -80,6 +80,8 @@ html {
   align-items: center;
   border: 1px solid var(--border-dark);
   border-radius: 100px;
+
+  cursor: pointer;
 }
 
 .header-menu_nav {
