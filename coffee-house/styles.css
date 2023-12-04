@@ -11,7 +11,9 @@
 
 body {
   background-color: var(--background-body);
+  font-feature-settings: 'clig' off, 'liga' off;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -355,6 +357,12 @@ html {
   width: 100%;
 }
 
+.menu_beverage .image-wrapper {
+  border-radius: 40px;
+
+  flex-shrink: 0;
+}
+
 .image-large {
   height: 590px;
 }
@@ -488,6 +496,8 @@ html {
 
   background: transparent;
   transition: all 1s ease;
+
+  box-sizing: border-box;
 }
 
 .footer_social-logo {
@@ -502,10 +512,6 @@ html {
 
   align-items: flex-start;
   justify-content: center;
-}
-
-.footer_contact-header {
-  margin: 0 0 40px 0;
 }
 
 .footer_contact {
@@ -567,9 +573,8 @@ html {
 
 .menu_list {
   flex-direction: row;
-  gap: 16px;
 
-  max-width: 100%;
+  gap: 16px;
 }
 
 .menu_list-item {
@@ -601,14 +606,20 @@ html {
   align-items: center;
 
   border-radius: 100px;
-  background-image: url("./static/images/coffee.svg");
-
-  font: normal 600 16px/24px Inter, sans-serif;
-
-  align-self: center;
-  justify-self: center;
 
   box-sizing: border-box;
+}
+
+.item-coffee {
+  background-image: url("./static/images/coffee.svg");
+}
+
+.item-tea {
+  background-image: url("./static/images/tea.svg");
+}
+
+.item-dessert {
+  background-image: url("./static/images/dessert.svg");
 }
 
 .menu_item-name {
@@ -638,10 +649,9 @@ html {
 
 .menu_beverage-image {
   display: block;
-  border-radius: 40px;
-  transition: all 0.3s ease;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 .menu_beverage-info {
