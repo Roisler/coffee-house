@@ -18,13 +18,21 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1400px) {
+@media (min-width: 769px) and (max-width: 1400px) {
   .image-large {
     height: auto;
   }
 
   .image-small {
     height: auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 2160px) {
+  .enjoy_menu .header-menu_coffee-logo {
+    position: absolute;
+  
+    right: 30%;
   }
 }
 
@@ -267,7 +275,14 @@
     transform: scale(1.1);
     transition: transform .5s ease;
   }
+
   .menu_beverage:hover .menu_beverage-image {
     transform: scale(1);
+  }
+
+  .enjoy_menu .header-menu_coffee-logo {
+    position: absolute;
+  
+    right: 30%;
   }
 }
