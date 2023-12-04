@@ -97,7 +97,12 @@ html {
 }
 
 .header-menu_nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+
+  gap: 8px;
 
   color: var(--text-dark);
   text-decoration: none;
@@ -132,6 +137,14 @@ html {
   height: 20px;
 
   fill: var(--background-body);
+
+  align-self: flex-start;
+}
+
+.enjoy_menu .header-menu_coffee-logo {
+  position: absolute;
+
+  right: 30%;
 }
 
 .enjoy {
@@ -181,6 +194,8 @@ html {
   text-decoration: none;
   color: var(--text-dark);
   background: var(--background-body);
+
+  position: relative;
 
   border-radius: 100px;
   border-style: none;
@@ -271,7 +286,7 @@ html {
 
   background: transparent;
 
-  transition: all .5s ease-in-out;
+  transition: all .7s ease-in-out;
 }
 
 .control-next {
@@ -379,10 +394,6 @@ html {
   width: 100%;
   object-fit: cover;
 }
-
-/*.about_image:hover {
-  transform: scale(1.1);
-}*/
 
 .mobile-apps {
   padding: 0 40px;
@@ -686,6 +697,10 @@ html {
   border-radius: 100px;
 
   cursor: pointer;
+}
+
+.active-link {
+  pointer-events: none;
 }
 
 .menu-main {
