@@ -12,6 +12,20 @@
     display: flex;
     align-self: center;
   }
+
+  .mobile-apps_container {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1400px) {
+  .image-large {
+    height: auto;
+  }
+
+  .image-small {
+    height: auto;
+  }
 }
 
 @media (max-width: 900px) {
@@ -31,6 +45,18 @@
 
   .menu_beverage:nth-child(odd) {
     justify-self: end;
+  }
+
+  .block-1 .image-wrapper:nth-child(2) {
+    display: none;
+  }
+  
+  .block-2 .image-wrapper:nth-child(1) {
+    display: none;
+  }
+
+  .about_blocks {
+    flex-direction: column;
   }
 }
 
@@ -60,23 +86,6 @@
 
   .enjoy_menu svg {
     visibility: visible;
-  }
-
-  .mobile-apps_container {
-    flex-direction: column;
-  }
-
-  .block-1 .image-wrapper:nth-child(2) {
-    display: none;
-  }
-  
-  .block-2 .image-wrapper:nth-child(1) {
-    display: none;
-  }
-
-  .about_blocks {
-    flex-direction: column;
-    
   }
 
   .footer-container {
