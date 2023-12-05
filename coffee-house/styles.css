@@ -72,6 +72,7 @@ html {
 
 .header-menu_burger {
   display: none;
+  position: relative;
   flex-direction: column;
   gap: 8px;
   width: 2.75rem;
@@ -82,6 +83,28 @@ html {
   border-radius: 100px;
 
   cursor: pointer;
+}
+
+.burger__line {
+  width: 18px;
+  height: 2px;
+  background-color: var(--text-dark);
+  transition: all 0.5s ease;
+}
+
+.header-menu_burger.active .burger__line_first {
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.header-menu_burger.active .burger__line_second {
+  position: absolute;
+  transform: rotate(-45deg);
+}
+
+.header-menu_burger.active .header-menu_nav {
+  display: flex;
+  flex-direction: column;
 }
 
 .header-menu_nav {
@@ -141,7 +164,16 @@ html {
   align-self: flex-start;
 }
 
+.header_mobile-menu {
+  display: flex;
+  height: 100vh;
 
+  padding: 60px 40px;
+
+  flex-direction: column;
+  gap: 100px;
+  transition: all 0.5s ease-in-out;
+}
 
 .enjoy {
   margin: 0 40px;
@@ -707,10 +739,6 @@ html {
   background: var(--border-dark);
   color: var(--text-light);
   cursor: default;
-}
-
-.active {
-  background: var(--border-dark);
 }
 
 .d-flex {
