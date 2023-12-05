@@ -28,15 +28,11 @@ const showMenu = () => {
 
 showMenu();
 
-
-
-
-
-/*const slider = document.querySelector('.favorite-coffee_slider');
+const slider = document.querySelector('.favorite-coffee_slider');
 const slides = Array.from(document.querySelectorAll('.favorite-coffee_slide'));
 
-const buttonNext = document.querySelector('.favorite-coffee_button-control-next');
-const buttonPrev = document.querySelector('.favorite-coffee_button-control-prev');
+const buttonNext = document.querySelector('.control-next');
+const buttonPrev = document.querySelector('.control-prev');
 
 const slidesCount = slides.length;
 
@@ -46,24 +42,24 @@ let slideIndex = 0;
 const showNextSlide = () => {
   slideIndex += 1;
   if (slideIndex >= slidesCount) {
-    slideIndex = slidesCount - 1;
-  }
-  showSlide();
-}
-const showPrevSlide = () => {
-  slideIndex -= 1;
-  if (slideIndex < 0) {
     slideIndex = 0;
   }
   showSlide();
-}
+};
+
+const showPrevSlide = () => {
+  slideIndex -= 1;
+  if (slideIndex < 0) {
+    slideIndex = slidesCount - 1;
+  }
+  showSlide();
+};
 
 const showSlide = () => {
-  console.log(slides);
-  console.log(slideIndex)
   slides.forEach((slide, index) => {
     if (index === slideIndex) {
       slide.classList.add('active');
+      slider.style = `transform: translateX(${-index * 100}%)`;
     } else {
       slide.classList.remove('active');
     }
@@ -73,4 +69,6 @@ const showSlide = () => {
 buttonNext.addEventListener('click', showNextSlide);
 buttonPrev.addEventListener('click', showPrevSlide);
 
-showSlide();*/
+showSlide();
+
+setInterval(showNextSlide, 5000);

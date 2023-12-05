@@ -9,6 +9,23 @@
   --border-light: #C1B6AD;
 }
 
+
+
+/*@keyframes background-delay {
+  0% {background: linear-gradient(90deg, rgba(64,63,61,1) 0%, rgba(193,182,173,1) 100%);}
+  20% {background: linear-gradient(90deg, rgba(64,63,61,1) 20%, rgba(193,182,173,1) 80%);}
+  40% {background: linear-gradient(90deg, rgba(64,63,61,1) 40%, rgba(193,182,173,1) 60%);}
+  60% {background: linear-gradient(90deg, rgba(64,63,61,1) 60%, rgba(193,182,173,1) 40%);}
+  80% {background: linear-gradient(90deg, rgba(64,63,61,1) 80%, rgba(193,182,173,1) 20%);}
+  100% {background: linear-gradient(90deg, rgba(64,63,61,1) 100%, rgba(193,182,173,1) 0%);}
+}*/
+
+@keyframes background-delay {
+  from {background-size: 0 auto;}
+  50% {background-size: 50% auto;}
+  to {background-size: 100% auto;}
+}
+
 body {
   background-color: var(--background-body);
   font-feature-settings: 'clig' off, 'liga' off;
@@ -281,15 +298,19 @@ html {
   gap: 40px;
   justify-content: center;
   align-items: center;
+
+  overflow: hidden;
 }
 
 .favorite-coffee_slider {
   flex-direction: row;
   align-items: center;
   flex: 1 0 auto;
-  overflow: hidden;
 
   width: 100%;
+
+  transform: translateX(0);
+  transition: all 1s;
 }
 
 .favorite-coffee_slide {
@@ -300,6 +321,8 @@ html {
   width: 100%;
   text-align: center;
   color: var(--text-dark);
+
+  user-select: none;
 }
 
 .favorite-coffee_button-control {
@@ -315,6 +338,8 @@ html {
   background: transparent;
 
   transition: all .7s ease-in-out;
+
+  cursor: pointer;
 }
 
 .control-next {
@@ -329,6 +354,8 @@ html {
   width: 480px;
   height: 480px;
   margin-bottom: 20px;
+
+  pointer-events: none;
 }
 
 .favorite-coffee_coffee-name,
@@ -374,9 +401,16 @@ html {
   background: var(--border-light);
   border-radius: 100px;
 }
+
+.favorite-coffee_control.active {
+  background: var(--border-dark);
+  animation: background-delay 5s;
+}
+
 .about {
   padding: 0 40px;
 }
+
 .about_container {
   flex-direction: column;
   gap: 40px;
