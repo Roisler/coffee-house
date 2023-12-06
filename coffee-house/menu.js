@@ -710,3 +710,33 @@ const productsByCategory = data.reduce((acc, item) => {
   return acc;
 }, []);
 
+const { coffee, tea, dessert } = productsByCategory;
+const mapping = {
+  coffee,
+  tea,
+  dessert,
+};
+
+const pathToImages = './static/images/';
+document.addEventListener('DOMContentLoaded', () => {
+  const beverages = document.querySelector('[data-category]');
+
+  const products = beverages.querySelectorAll('.menu_beverage');
+
+  const { category } = beverages.dataset;
+
+  products.forEach((item, index) => {
+    const itemName = item.querySelector('.menu_beverage-name');
+    const itemDescription = item.querySelector('.menu_beverage-description');
+    const itemPrice = item.querySelector('.menu_beverage-price');
+    const itemImage = item.querySelector('.menu_beverage-image');
+
+    const { name, description, price } = productsByCategory[category][index];
+    itemName.textContent = name;
+    itemDescription.textContent = description
+    
+    itemPrice.textContent = `$${price}`;
+    itemImage.src = `${pathToImages}${category}-${index + 1}.png`;
+    itemImage.alt = `Image ${name}`;
+  })
+})
