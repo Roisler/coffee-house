@@ -719,6 +719,8 @@ const pathToImages = './static/images/';
 const beverages = document.querySelectorAll('.menu_beverages');
 const items = document.querySelectorAll('.menu_beverage');
 
+const modalOverlay = document.querySelector('.modal_overlay');
+
 const resetStyle = (elements) => {
   elements.forEach((element) => {
     element.style.removeProperty('display');
@@ -753,6 +755,17 @@ const fillCards = (id = 'coffee') => {
 };
 
 document.addEventListener('DOMContentLoaded', fillCards());
+
+items.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const parent = item.closest('.menu_beverages');
+    const { category } = parent.dataset;
+    const { id } = item;
+
+    showModal(category, id);
+  })
+})
 
 const changeCategory = (id = 'coffee') => {
   const buttons = document.querySelectorAll('[data-id]');
@@ -796,6 +809,18 @@ refreshButton.addEventListener('click', (e) => {
   })
   hideRefresh();
 });
+
+const showModal = (category = 2, id = 2) => {
+  const modal = document.querySelector('.modal_wrapper');
+  modal.classList.add('show');
+};
+
+const hideModal = () => {
+  const modal = document.querySelector('.modal_wrapper');
+  modal.classList.remove('show');
+}
+
+modalOverlay.addEventListener('click', hideModal);
 
 window.addEventListener('resize', (e) => {
   e.preventDefault();

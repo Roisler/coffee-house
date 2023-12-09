@@ -228,7 +228,7 @@ html {
 
 .enjoy_cafe {
   margin: 0;
-  font: normal 400 16px/150% Inter, sans-serif;
+  font: normal 400 16px/24px Inter, sans-serif;
 }
 
 .enjoy_menu {
@@ -359,7 +359,8 @@ html {
 }
 
 .favorite-coffee_coffee-name,
-.menu_beverage-name {
+.menu_beverage-name,
+.modal_total p {
   margin: 0;
   padding: 0;
   font: normal 600 24px/30px Inter, sans-serif;
@@ -492,9 +493,9 @@ html {
   width: 100%;
 }
 
-.mobile-apps_description {
+.mobile-apps_description,
+.modal_choice p {
   font: normal 400 16px/24px Inter, sans-serif;
-  color: var(--text-dark);
 }
 
 .mobile-apps_buttons-block {
@@ -526,7 +527,8 @@ html {
   transition: all 1s ease;
 }
 
-.mobile-apps_available-text {
+.mobile-apps_available-text,
+.modal_alert {
   font: normal 600 10px/14px Inter, sans-serif;
 }
 
@@ -793,38 +795,115 @@ html {
   background-color: var(--background-body);
 }
 
+.modal_wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeEffect .5s;
+}
+
+.modal_wrapper.show {
+  display: flex;
+}
+
 .modal {
-  position: absolute;
-  margin: auto;
   width: 800px;
   padding: 16px;
 
-  display: none;
+  display: flex;
+  flex-direction: row;
+  background: var(--background-body);
+
+  border-radius: 40px;
+  z-index: 100;
+}
+
+.modal .image-wrapper {
+  width: 340px;
+  height: 340px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .modal_description {
   flex-direction: column;
   gap: 20px;
+
+  padding-left: 20px;
 }
 
 .modal_title {
   flex-direction: column;
   gap: 12px;
+
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
 }
 
 .modal_choice {
   flex-direction: column;
   gap: 8px;
+
+  align-items: flex-start;
 }
 
 .modal_tabs {
   flex-direction: row;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .modal_total {
   flex-direction: row;
   justify-content: space-between;
+  gap: 20px;
+}
+
+.modal_alert {
+  flex-direction: row;
+  gap: 8px;
+  padding: 12px 0;
+
+  border-top: 1px solid var(--border-light);
+}
+
+.modal_alert svg {
+  flex-shrink: 0;
+}
+
+.modal_close {
+  display: flex;
+
+  width: 100%;
+  padding: 10px 70px;
+
+  justify-content: center;
+  align-items: center;
+
+  align-self: stretch;
+
+  border: 1px solid var(--border-dark);
+  border-radius: 100px;
+
+  background: var(--background-body);
+  font: normal 600 16px/24px Inter, sans-serif;
+  color: var(--text-dark);
+}
+
+.modal_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: dimgray;
+  opacity: 0.6;
+  z-index: 1;
 }
 
 .d-flex {

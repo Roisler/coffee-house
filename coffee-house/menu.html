@@ -342,29 +342,43 @@
       </div>
     </div>
   </footer>
-  <div class="modal">
-    <div class="image-wrapper">
-      <img class="menu_beverage-image">
+  <div class="modal_wrapper">
+    <div class="modal">
+      <div class="image-wrapper">
+        <img class="menu_beverage-image" src="./static/images/coffee-1.png">
+      </div>
+      <div class="modal_description d-flex">
+        <div class="modal_title d-flex">
+          <h2 class="menu_beverage-name">Irish Coffee</h2>
+          <p class="menu_beverage-description">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
+        </div>
+        <div class="modal_choice d-flex">
+          <p class="modal_option m-0">Size</p>
+          <div class="modal_tabs"></div>
+        </div>
+        <div class="modal_choice d-flex">
+          <p class="modal_option m-0">Additives</p>
+          <div class="modal_tabs"></div>
+        </div>
+        <div class="modal_total d-flex">
+          <p>Total</p>
+          <p>$10</p>
+        </div>
+        <div class="modal_alert d-flex">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 7.66663V11" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 5.00667L8.00667 4.99926" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8.00016 14.6667C11.6821 14.6667 14.6668 11.6819 14.6668 8.00004C14.6668 4.31814 11.6821 1.33337 8.00016 1.33337C4.31826 1.33337 1.3335 4.31814 1.3335 8.00004C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667Z" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>The cost is not final. Download our mobile app to see the final price and place your order.    
+            Earn loyalty points and enjoy your favorite coffee with up to 20% discount.</span>
+        </div>
+        <button class="modal_close">
+          Close
+        </button>
+      </div>
     </div>
-    <div class="modal_description d-flex">
-      <div class="modal_title d-flex">
-        <h2 class="menu_beverage-name">Irish Coffee</h2>
-        <p class="menu_beverage-description">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
-      </div>
-      <div class="modal_choice d-flex">
-        <p class="modal_option">Size</p>
-        <div class="modal_tabs"></div>
-      </div>
-      <div class="modal_choice d-flex">
-        <p class="modal_option">Additives</p>
-        <div class="modal_tabs"></div>
-      </div>
-      <div class="modal_total">
-        <p>Total</p>
-        <p>$10</p>
-      </div>
-      <div class="modal_alert"></div>
-    </div>
+    <div class="modal_overlay"></div>
   </div>
   </div>
   <script src="./menu.js" defer></script>
