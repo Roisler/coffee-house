@@ -683,6 +683,9 @@ html {
   border-radius: 100px;
 
   box-sizing: border-box;
+  background-color: var(--border-light);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .item-coffee {
@@ -703,12 +706,23 @@ html {
 }
 
 .menu_beverages {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   gap: 40px;
 
   max-width: 100%;
+
+  animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+.menu_beverages.show {
+  display: grid;
 }
 
 .menu_beverage {
@@ -773,6 +787,44 @@ html {
   background: var(--border-dark);
   color: var(--text-light);
   cursor: default;
+}
+
+.menu_list-item.active .menu_item-logo {
+  background-color: var(--background-body);
+}
+
+.modal {
+  position: absolute;
+  margin: auto;
+  width: 800px;
+  padding: 16px;
+
+  display: none;
+}
+
+.modal_description {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal_title {
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal_choice {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal_tabs {
+  flex-direction: row;
+  gap: 8px;
+}
+
+.modal_total {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .d-flex {

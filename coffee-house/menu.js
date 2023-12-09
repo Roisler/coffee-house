@@ -711,19 +711,19 @@ const productsByCategory = data.reduce((acc, item) => {
 }, []);
 
 const { coffee, tea, dessert } = productsByCategory;
-const mapping = {
-  coffee,
-  tea,
-  dessert,
-};
 
 const pathToImages = './static/images/';
-document.addEventListener('DOMContentLoaded', () => {
-  const beverages = document.querySelector('[data-category]');
 
-  const products = beverages.querySelectorAll('.menu_beverage');
+const fillCards = (id = 'coffee') => {
+  const beverages = document.querySelectorAll('.menu_beverages');
+  beverages.forEach((item) => {
+    item.classList.remove('show');
+  });
+  const beveragesActive = document.querySelector(`[data-category=${id}]`);
+  beveragesActive.classList.add('show');
+  const products = beveragesActive.querySelectorAll('.menu_beverage');
 
-  const { category } = beverages.dataset;
+  const { category } = beveragesActive.dataset;
 
   products.forEach((item, index) => {
     const itemName = item.querySelector('.menu_beverage-name');
@@ -735,8 +735,31 @@ document.addEventListener('DOMContentLoaded', () => {
     itemName.textContent = name;
     itemDescription.textContent = description
     
+    item.id = index + 1;
     itemPrice.textContent = `$${price}`;
     itemImage.src = `${pathToImages}${category}-${index + 1}.png`;
     itemImage.alt = `Image ${name}`;
+  });
+};
+
+document.addEventListener('DOMContentLoaded', fillCards());
+
+const changeCategory = (id = 'coffee') => {
+  const buttons = document.querySelectorAll('[data-id]');
+  buttons.forEach((button) => {
+    button.classList.remove('active');
   })
-})
+  const activeButton = document.querySelector(`[data-id=${id}]`);
+  activeButton.classList.add('active');
+  fillCards(id);
+};
+
+const buttons = document.querySelectorAll('.menu_list-item');
+buttons.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(item.dataset.id)
+    changeCategory(item.dataset.id);
+  })
+});
+
