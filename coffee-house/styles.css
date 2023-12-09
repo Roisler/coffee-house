@@ -713,7 +713,7 @@ html {
 
   max-width: 100%;
 
-  animation: fadeEffect 1s;
+  animation: fadeEffect .5s;
 }
 
 @keyframes fadeEffect {

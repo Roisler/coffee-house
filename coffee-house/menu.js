@@ -700,6 +700,8 @@ const data = [
   }
 ];
 
+const { clientWidth } = document.documentElement;
+
 const productsByCategory = data.reduce((acc, item) => {
   const category = item['category'];
   if (acc[category]) {
@@ -714,8 +716,16 @@ const { coffee, tea, dessert } = productsByCategory;
 
 const pathToImages = './static/images/';
 
+const beverages = document.querySelectorAll('.menu_beverages');
+const items = document.querySelectorAll('.menu_beverage');
+
+const resetStyle = (elements) => {
+  elements.forEach((element) => {
+    element.style.removeProperty('display');
+  })
+};
+
 const fillCards = (id = 'coffee') => {
-  const beverages = document.querySelectorAll('.menu_beverages');
   beverages.forEach((item) => {
     item.classList.remove('show');
   });
@@ -755,11 +765,44 @@ const changeCategory = (id = 'coffee') => {
 };
 
 const buttons = document.querySelectorAll('.menu_list-item');
+const refreshButton = document.querySelector('.menu_refresh');
+
+const showRefresh = () => {
+  refreshButton.classList.add('show');
+};
+
+const hideRefresh = () => {
+  refreshButton.classList.remove('show');
+};
+
 buttons.forEach((item) => {
   item.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(item.dataset.id)
-    changeCategory(item.dataset.id);
+
+    const { id } = item.dataset;
+    changeCategory(id);
+
+    productsByCategory[id].length > 4 ? showRefresh() : hideRefresh();
+    resetStyle(items);
   })
+});
+
+refreshButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const activeBeverages = document.querySelector('.menu_beverages.show');
+  const items = activeBeverages.querySelectorAll('.menu_beverage');
+  items.forEach((beverage) => {
+    beverage.style.setProperty('display', 'flex');
+  })
+  hideRefresh();
+});
+
+window.addEventListener('resize', (e) => {
+  e.preventDefault();
+  const { clientWidth } = document.documentElement;
+  if (clientWidth > 900) {
+    showRefresh();
+    resetStyle(items);
+  }
 });
 

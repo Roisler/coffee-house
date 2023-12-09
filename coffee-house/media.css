@@ -41,10 +41,6 @@
     grid-template-rows: 1fr;
   }
 
-  .menu_beverage:nth-child(n + 5) {
-    display: none;
-  }
-
   .menu_beverage {
     max-width: 310px;
     max-height: 504px;
@@ -99,9 +95,17 @@
     flex-direction: column;
   }
 
+  .menu_beverage:nth-child(n + 5) {
+    display: none;
+  }
+
   .menu_refresh {
-    display: flex;
+    display: none;
     align-self: center;
+  }
+
+  .menu_refresh.show {
+    display: flex;
   }
 }
 
