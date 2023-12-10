@@ -700,8 +700,15 @@ const data = [
   }
 ];
 
-const { clientWidth } = document.documentElement;
+/* Path to Images*/
 
+const pathToImages = './static/images/';
+
+/*        Products          */
+const beverages = document.querySelectorAll('.menu_beverages');
+const items = document.querySelectorAll('.menu_beverage');
+
+/* Products sort by category */
 const productsByCategory = data.reduce((acc, item) => {
   const category = item['category'];
   if (acc[category]) {
@@ -712,21 +719,36 @@ const productsByCategory = data.reduce((acc, item) => {
   return acc;
 }, []);
 
-const { coffee, tea, dessert } = productsByCategory;
+/*         Tabs          */
+const tabButtons = document.querySelectorAll('[data-id]');
 
-const pathToImages = './static/images/';
+/*    Refresh menu      */
+const refreshButton = document.querySelector('.menu_refresh');
 
-const beverages = document.querySelectorAll('.menu_beverages');
-const items = document.querySelectorAll('.menu_beverage');
+/*    Modal      */
+const modal = document.querySelector('.modal_wrapper');
+const modalOverlay = modal.querySelector('.modal_overlay');
+const closeButton = modal.querySelector('.modal_close');
+const modalItemName = modal.querySelector('.menu_beverage-name');
+const modalItemDescription = modal.querySelector('.menu_beverage-description');
+const modalItemPrice = modal.querySelector('.modal_price');
+const modalItemImage = modal.querySelector('.menu_beverage-image');
+const optionSize = modal.querySelector('[data-option="sizes"]');
+const optionAdditive = modal.querySelector('[data-option="additives"]');
+const optionWrappers = modal.querySelectorAll('.menu_list-item');
+const optionTabs = modal.querySelectorAll('.modal_tab');
 
-const modalOverlay = document.querySelector('.modal_overlay');
 
+const { clientWidth } = document.documentElement;
+
+/* Hide elements after update  */
 const resetStyle = (elements) => {
   elements.forEach((element) => {
     element.style.removeProperty('display');
   })
 };
 
+/*   Fill cards with data from the object  */
 const fillCards = (id = 'coffee') => {
   beverages.forEach((item) => {
     item.classList.remove('show');
@@ -759,7 +781,7 @@ document.addEventListener('DOMContentLoaded', fillCards());
 items.forEach((item) => {
   item.addEventListener('click', (e) => {
     e.preventDefault();
-    const parent = item.closest('.menu_beverages');
+    const parent = e.target.closest('.menu_beverages');
     const { category } = parent.dataset;
     const { id } = item;
 
@@ -768,17 +790,13 @@ items.forEach((item) => {
 })
 
 const changeCategory = (id = 'coffee') => {
-  const buttons = document.querySelectorAll('[data-id]');
-  buttons.forEach((button) => {
-    button.classList.remove('active');
+  tabButtons.forEach((tab) => {
+    tab.classList.remove('active');
   })
-  const activeButton = document.querySelector(`[data-id=${id}]`);
-  activeButton.classList.add('active');
+  const activeTab = document.querySelector(`[data-id=${id}]`);
+  activeTab.classList.add('active');
   fillCards(id);
 };
-
-const buttons = document.querySelectorAll('.menu_list-item');
-const refreshButton = document.querySelector('.menu_refresh');
 
 const showRefresh = () => {
   refreshButton.classList.add('show');
@@ -788,11 +806,11 @@ const hideRefresh = () => {
   refreshButton.classList.remove('show');
 };
 
-buttons.forEach((item) => {
-  item.addEventListener('click', (e) => {
+tabButtons.forEach((tab) => {
+  tab.addEventListener('click', (e) => {
     e.preventDefault();
 
-    const { id } = item.dataset;
+    const { id } = tab.dataset;
     changeCategory(id);
 
     productsByCategory[id].length > 4 ? showRefresh() : hideRefresh();
@@ -810,17 +828,84 @@ refreshButton.addEventListener('click', (e) => {
   hideRefresh();
 });
 
-const showModal = (category = 2, id = 2) => {
-  const modal = document.querySelector('.modal_wrapper');
+const calculateTotal = (tabs) => {
+  const total = tabs
+  .filter((tab) => tab.checked)
+  .reduce((acc, item) => {
+    acc += Number(item.value);
+    return acc;
+  }, 0);
+  return total;
+};
+
+optionTabs.forEach((optionTab) => {
+  optionTab.addEventListener('change', () => {
+    const { price } = modalItemPrice.dataset;
+    modalItemPrice.textContent = (Number(price) + calculateTotal([...optionTabs])).toFixed(2);
+  })
+});
+
+const fillModalCard = (item, id) => {
+  console.log(item.category)
+  console.log(id)
+  modalItemName.textContent = item.name;
+  modalItemDescription.textContent = item.description;
+  modalItemPrice.textContent = Number(item.price).toFixed(2);
+  modalItemPrice.dataset.price = item.price;
+  modalItemImage.src = `${pathToImages}${item.category}-${id}.png`;
+  modalItemImage.alt = `Image ${item.name}`;
+
+  const radio = optionSize.querySelectorAll('.modal_tab');
+  const sizes = Object.keys(item.sizes);
+  
+  radio.forEach((el, index) => {
+    el.id = sizes[index];
+    el.value = item.sizes[el.id]['add-price'];
+    
+    const label = el.nextElementSibling;
+    label.htmlFor = el.id;
+    label.textContent = item.sizes[el.id][el.name]
+  });
+
+  const checkboxes = optionAdditive.querySelectorAll('.modal_tab');
+
+  checkboxes.forEach((el, index) => {
+    const option = item[el.name][index];
+    el.id = option.name.toLowerCase();
+    el.value = option['add-price'];
+    
+    const label = el.nextElementSibling;
+    label.htmlFor = el.id;
+    label.textContent = option.name;
+  });
+  //calculateTotal([...radio, ...checkboxes])
+};
+
+/*optionWrappers.forEach((el) => {
+  el.addEventListener('click', () => {
+    const tab = el.querySelector('.modal_tab');
+    tab.checked = tab.checked ? false : true;
+  });
+});*/
+
+const showModal = (category, id) => {
+  const key = id - 1;
+  const item = productsByCategory[category][key];
+  fillModalCard(item, id);
   modal.classList.add('show');
+  optionTabs[0].checked = true;
 };
 
 const hideModal = () => {
   const modal = document.querySelector('.modal_wrapper');
   modal.classList.remove('show');
-}
+  optionTabs.forEach((tab) => {
+    tab.checked = false;
+  });
+};
 
 modalOverlay.addEventListener('click', hideModal);
+closeButton.addEventListener('click', hideModal);
 
 window.addEventListener('resize', (e) => {
   e.preventDefault();

@@ -494,7 +494,7 @@ html {
 }
 
 .mobile-apps_description,
-.modal_choice p {
+.modal_options p {
   font: normal 400 16px/24px Inter, sans-serif;
 }
 
@@ -673,6 +673,21 @@ html {
   box-sizing: border-box;
 
   cursor: default;
+
+  overflow: hidden;
+}
+
+.menu_list-item > label {
+  position: relative;
+}
+
+.menu_list-item > label:before {
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  height: 50px;
+  width: 250%;
+  content: '';
 }
 
 .menu_item-logo {
@@ -688,6 +703,8 @@ html {
   background-color: var(--border-light);
   background-repeat: no-repeat;
   background-position: center;
+
+  font: normal 600 16px/24px Inter, sans-serif;
 }
 
 .item-coffee {
@@ -705,6 +722,10 @@ html {
 .menu_item-name {
   font: normal 600 16px/24px Inter, sans-serif;
   margin: 0;
+}
+
+label.menu_item-name {
+  cursor: pointer;
 }
 
 .menu_beverages {
@@ -847,7 +868,7 @@ html {
   align-self: stretch;
 }
 
-.modal_choice {
+.modal_options {
   flex-direction: column;
   gap: 8px;
 
@@ -860,10 +881,29 @@ html {
   flex-wrap: wrap;
 }
 
+.modal_tab {
+  display: none;
+}
+
+.menu_list-item:has(.modal_tab:checked) {
+  background: var(--border-dark);
+  color: var(--text-light);
+  cursor: default;
+}
+
+.menu_list-item:has(.modal_tab:checked) > .menu_item-logo {
+  background-color: var(--background-body);
+  color: var(--border-dark);
+}
+
 .modal_total {
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
+}
+
+.modal_price::before {
+  content: '$';
 }
 
 .modal_alert {
@@ -895,6 +935,10 @@ html {
   background: var(--background-body);
   font: normal 600 16px/24px Inter, sans-serif;
   color: var(--text-dark);
+
+  cursor: pointer;
+
+  transition: all 0.5s;
 }
 
 .modal_overlay {

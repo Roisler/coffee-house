@@ -349,20 +349,52 @@
       </div>
       <div class="modal_description d-flex">
         <div class="modal_title d-flex">
-          <h2 class="menu_beverage-name">Irish Coffee</h2>
-          <p class="menu_beverage-description">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
+          <h2 class="menu_beverage-name"></h2>
+          <p class="menu_beverage-description"></p>
         </div>
-        <div class="modal_choice d-flex">
+        <div class="modal_options d-flex" data-option="sizes">
           <p class="modal_option m-0">Size</p>
-          <div class="modal_tabs"></div>
+          <div class="modal_tabs d-flex" id="size">
+            <div class="menu_list-item no-hover d-flex">
+              <span class="menu_item-logo d-flex">S</span>
+              <input class="modal_tab" name="size" type="radio">
+              <label class="menu_item-name"></label>
+            </div>
+            <div class="menu_list-item no-hover d-flex">
+              <span class="menu_item-logo d-flex">M</span>
+              <input class="modal_tab" name="size" type="radio">
+              <label class="menu_item-name"></label>
+            </div>
+            <div class="menu_list-item no-hover d-flex">
+              <span class="menu_item-logo d-flex">L</span>
+              <input class="modal_tab" name="size" type="radio">
+              <label class="menu_item-name"></label>
+            </div>
+          </div>
         </div>
-        <div class="modal_choice d-flex">
+        <div class="modal_options d-flex" data-option="additives">
           <p class="modal_option m-0">Additives</p>
-          <div class="modal_tabs"></div>
+          <div class="modal_tabs d-flex" id="additives">
+            <div class="menu_list-item no-hover d-flex">
+              <span class="menu_item-logo d-flex">1</span>
+              <input class="modal_tab" name="additives" type="checkbox">
+              <label class="menu_item-name"></label>
+            </div>
+            <div class="menu_list-item no-hover d-flex">
+              <span class="menu_item-logo d-flex">2</span>
+              <input class="modal_tab" name="additives" type="checkbox">
+              <label class="menu_item-name"></label>
+            </div>
+            <div class="menu_list-item no-hover d-flex">
+              <span class="menu_item-logo d-flex">3</span>
+              <input class="modal_tab" name="additives" type="checkbox">
+              <label class="menu_item-name"></label>
+            </div>
+          </div>
         </div>
         <div class="modal_total d-flex">
           <p>Total</p>
-          <p>$10</p>
+          <p class="modal_price"></p>
         </div>
         <div class="modal_alert d-flex">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">

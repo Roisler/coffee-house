@@ -278,13 +278,15 @@
     cursor: pointer;
   }
 
-  .menu_list-item:hover {
+  .menu_list-item:not(.no-hover):hover,
+  .modal_close:hover {
     background: #665F55;
     color: var(--text-light);
   }
 
-  .menu_list-item:hover .menu_item-logo {
+  .menu_list-item:not(.no-hover):hover .menu_item-logo {
     background-color: var(--background-body);
+    color: var(--border-dark);
   }
 
   .menu_beverage-image {
