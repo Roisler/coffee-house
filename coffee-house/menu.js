@@ -700,8 +700,9 @@ const data = [
   }
 ];
 
-/* Path to Images*/
+const body = document.querySelector('body');
 
+/* Path to Images*/
 const pathToImages = './static/images/';
 
 /*        Products          */
@@ -894,6 +895,8 @@ const showModal = (category, id) => {
   fillModalCard(item, id);
   modal.classList.add('show');
   optionTabs[0].checked = true;
+
+  body.classList.add('no-scroll');
 };
 
 const hideModal = () => {
@@ -902,6 +905,7 @@ const hideModal = () => {
   optionTabs.forEach((tab) => {
     tab.checked = false;
   });
+  body.classList.remove('no-scroll');
 };
 
 modalOverlay.addEventListener('click', hideModal);

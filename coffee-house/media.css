@@ -141,6 +141,12 @@
   }
 }
 
+@media (max-width: 640px) {
+  .modal .image-wrapper {
+    display: none;
+  }
+}
+
 @media (max-width: 536px) {
   .enjoy {
     padding: 60px 16px;
@@ -194,10 +200,6 @@
 
   .menu_list-item {
     box-sizing: border-box;
-  }
-
-  .modal .image-wrapper {
-    display: none;
   }
 }
 
