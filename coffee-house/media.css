@@ -107,6 +107,10 @@
   .menu_refresh.show {
     display: flex;
   }
+
+  .modal {
+    margin: 10% auto auto auto;
+  }
 }
 
 @media (max-width: 720px) {
@@ -190,6 +194,10 @@
 
   .menu_list-item {
     box-sizing: border-box;
+  }
+
+  .modal .image-wrapper {
+    display: none;
   }
 }
 
