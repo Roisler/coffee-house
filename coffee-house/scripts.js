@@ -1,45 +1,8 @@
-const body = document.querySelector('body');
-
-const burger = document.querySelector('.header-menu_burger');
-const headerMenu = document.querySelector('.header-menu');
-
-const navMenuOrigin = document.querySelector('.header-menu_nav');
-const navMenu = navMenuOrigin.cloneNode(true);
-
-const mobileMenu = document.createElement('div');
-
-const logoMenuOrigin = document.querySelector('.header-menu_coffee-menu');
-const logoMenu = logoMenuOrigin.cloneNode(true);
-
 let progressValue = 0;
 let intervalId = null;
 
 let touchStart = null;
 let touchEnd = null;
-
-const showMenu = () => {
-  burger.addEventListener('click', () => {
-    if (burger.classList.contains('active')) {
-      burger.classList.remove('active');
-      headerMenu.removeChild(mobileMenu);
-      navMenu.style = 'display: none';
-      logoMenu.style = 'display: none';
-      body.classList.remove('no-scroll');
-    } else {
-      burger.classList.add('active');
-      mobileMenu.classList.add('header_mobile-menu');
-      headerMenu.appendChild(mobileMenu);
-
-      mobileMenu.appendChild(navMenu);
-      mobileMenu.appendChild(logoMenu);
-      navMenu.style = 'display: flex; flex-direction: column';
-      logoMenu.style = 'display: flex;';
-      body.classList.add('no-scroll');
-    }
-  });
-};
-
-showMenu();
 
 const slider = document.querySelector('.favorite-coffee_slider');
 const slides = Array.from(slider.querySelectorAll('.favorite-coffee_slide'));
@@ -113,21 +76,13 @@ const getTouchEnd = (e) => {
   touchEnd = e.changedTouches[0].clientX;
 };
 
-const swipe = () => {
-  if (!touchEnd) {
-    return;
-  }
+const swipe = (e) => {
+  touchEnd = e.changedTouches[0].clientX;
   const swipeValue = touchStart - touchEnd;
   if (swipeValue > 0 && swipeValue > 20) {
-    clearInterval(intervalId);
-    progressValue = 0;
-    launchProgress(progressValue);
     showNextSlide();
   }
   if (swipeValue < 0 && Math.abs(swipeValue) > 20) {
-    clearInterval(intervalId);
-    progressValue = 0;
-    launchProgress(progressValue);
     showPrevSlide();
   }
   launchProgress(progressValue);
@@ -167,15 +122,15 @@ slides.forEach((slide) => {
   });
   slide.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    getTouchStart(e);
     pauseProgress();
+    getTouchStart(e);
   });
   slide.addEventListener('touchend', (e) => {
     e.preventDefault();
-    getTouchEnd(e);
+    swipe(e);
   });
-  slide.addEventListener('touchmove', (e) => {
+  /*slide.addEventListener('touchmove', (e) => {
     e.preventDefault();
     swipe();
-  })
+  })*/
 })

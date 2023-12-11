@@ -700,14 +700,11 @@ const data = [
   }
 ];
 
-const body = document.querySelector('body');
-
 /* Path to Images*/
 const pathToImages = './static/images/';
 
 /*        Products          */
 const beverages = document.querySelectorAll('.menu_beverages');
-const items = document.querySelectorAll('.menu_beverage');
 
 /* Products sort by category */
 const productsByCategory = data.reduce((acc, item) => {
@@ -733,7 +730,7 @@ const closeButton = modal.querySelector('.modal_close');
 const modalItemName = modal.querySelector('.menu_beverage-name');
 const modalItemDescription = modal.querySelector('.menu_beverage-description');
 const modalItemPrice = modal.querySelector('.modal_price');
-const modalItemImage = modal.querySelector('.menu_beverage-image');
+const modalItemImageWrapper = modal.querySelector('.image-wrapper');
 const optionSize = modal.querySelector('[data-option="sizes"]');
 const optionAdditive = modal.querySelector('[data-option="additives"]');
 const optionWrappers = modal.querySelectorAll('.menu_list-item');
@@ -750,13 +747,64 @@ const resetStyle = (elements) => {
 };
 
 /*   Fill cards with data from the object  */
+const categories = Object.keys(productsByCategory);
+
 const fillCards = (id = 'coffee') => {
   beverages.forEach((item) => {
     item.classList.remove('show');
   });
   const beveragesActive = document.querySelector(`[data-category=${id}]`);
   beveragesActive.classList.add('show');
-  const products = beveragesActive.querySelectorAll('.menu_beverage');
+  const products = productsByCategory[id];
+  products.forEach((item, index) => {
+    const beverage = document.createElement('div');
+    beverage.classList.add('menu_beverage');
+    beverage.classList.add('d-flex');
+
+    const imageWrapper = document.createElement('div');
+    imageWrapper.classList.add('image-wrapper');
+
+    const itemImage = document.createElement('img');
+    itemImage.classList.add('menu_beverage-image');
+
+    imageWrapper.append(itemImage);
+    beverage.append(imageWrapper);
+
+    const info = document.createElement('div');
+    info.classList.add('menu_beverage-info');
+    info.classList.add('d-flex');
+
+    const itemName = document.createElement('h2');
+    itemName.classList.add('menu_beverage-name');
+
+    const itemDescription = document.createElement('p');
+    itemDescription.classList.add('menu_beverage-description');
+
+    const itemPrice = document.createElement('p');
+    itemPrice.classList.add('menu_beverage-price');
+
+    info.appendChild(itemName);
+    info.appendChild(itemDescription);
+    info.appendChild(itemPrice);
+
+    beverage.appendChild(info);
+    beveragesActive.appendChild(beverage);
+
+    const { name, description, price, category } = item;
+    itemName.textContent = name;
+    itemDescription.textContent = description;
+    
+    beverage.id = index + 1;
+    itemPrice.textContent = `$${price}`;
+    itemImage.src = `${pathToImages}${id}-${index + 1}.png`;
+    itemImage.alt = `Image ${name}`;
+
+    beverage.addEventListener(('click'), (e) => {
+      e.preventDefault();
+      showModal(category, beverage.id);
+    });
+  });
+  /*const products = beveragesActive.querySelectorAll('.menu_beverage');
 
   const { category } = beveragesActive.dataset;
 
@@ -774,12 +822,12 @@ const fillCards = (id = 'coffee') => {
     itemPrice.textContent = `$${price}`;
     itemImage.src = `${pathToImages}${category}-${index + 1}.png`;
     itemImage.alt = `Image ${name}`;
-  });
+  });*/
 };
 
 document.addEventListener('DOMContentLoaded', fillCards());
 
-items.forEach((item) => {
+/*items.forEach((item) => {
   item.addEventListener('click', (e) => {
     e.preventDefault();
     const parent = e.target.closest('.menu_beverages');
@@ -788,13 +836,15 @@ items.forEach((item) => {
 
     showModal(category, id);
   })
-})
+})*/
 
 const changeCategory = (id = 'coffee') => {
   tabButtons.forEach((tab) => {
     tab.classList.remove('active');
   })
   const activeTab = document.querySelector(`[data-id=${id}]`);
+  const activeBeverage = document.querySelector(`[data-category=${id}]`);
+  activeBeverage.innerHTML = '';
   activeTab.classList.add('active');
   fillCards(id);
 };
@@ -815,6 +865,7 @@ tabButtons.forEach((tab) => {
     changeCategory(id);
 
     productsByCategory[id].length > 4 ? showRefresh() : hideRefresh();
+    const items = document.querySelectorAll('.menu_beverage');
     resetStyle(items);
   })
 });
@@ -847,14 +898,18 @@ optionTabs.forEach((optionTab) => {
 });
 
 const fillModalCard = (item, id) => {
-  console.log(item.category)
-  console.log(id)
   modalItemName.textContent = item.name;
   modalItemDescription.textContent = item.description;
   modalItemPrice.textContent = Number(item.price).toFixed(2);
   modalItemPrice.dataset.price = item.price;
+
+  const modalItemImage = document.createElement('img');
+  modalItemImage.classList.add('menu_beverage-image');
+
   modalItemImage.src = `${pathToImages}${item.category}-${id}.png`;
   modalItemImage.alt = `Image ${item.name}`;
+
+  modalItemImageWrapper.appendChild(modalItemImage);
 
   const radio = optionSize.querySelectorAll('.modal_tab');
   const sizes = Object.keys(item.sizes);
@@ -901,6 +956,7 @@ const showModal = (category, id) => {
 
 const hideModal = () => {
   const modal = document.querySelector('.modal_wrapper');
+  modalItemImageWrapper.innerHTML = '';
   modal.classList.remove('show');
   optionTabs.forEach((tab) => {
     tab.checked = false;
@@ -912,10 +968,10 @@ modalOverlay.addEventListener('click', hideModal);
 closeButton.addEventListener('click', hideModal);
 
 window.addEventListener('resize', (e) => {
-  e.preventDefault();
   const { clientWidth } = document.documentElement;
-  if (clientWidth > 900) {
+  if (clientWidth > 800) {
     showRefresh();
+    const items = document.querySelectorAll('.menu_beverage');
     resetStyle(items);
   }
 });
