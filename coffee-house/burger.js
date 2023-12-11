@@ -31,13 +31,19 @@ const showMenu = () => {
 };
 
 const hideMenu = () => {
-  burger.classList.remove('active');
-  mobileMenu.classList.add('closing');
-  mobileMenu.classList.remove('show');
-  setTimeout(() => {
+  const isModalOpen = () => {
+    const modalOpen = document.querySelector('.modal_wrapper.show');
+    return !!modalOpen;
+  };
+  if (!isModalOpen()) {
+    burger.classList.remove('active');
+    mobileMenu.classList.add('closing');
+    mobileMenu.classList.remove('show');
+    setTimeout(() => {
     mobileMenu.classList.remove('closing');
-  }, 300);
-  body.classList.remove('no-scroll');
+    }, 300);
+    body.classList.remove('no-scroll');
+  }
 };
 
 navMenuItems.forEach((item) => {

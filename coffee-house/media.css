@@ -107,10 +107,6 @@
   .menu_refresh.show {
     display: flex;
   }
-
-  .modal {
-    margin: 10% auto auto auto;
-  }
 }
 
 @media (max-width: 720px) {
@@ -141,7 +137,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 765px) {
   .modal .image-wrapper {
     display: none;
   }
