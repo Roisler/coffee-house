@@ -121,12 +121,10 @@ slides.forEach((slide) => {
     launchProgress(progressValue);
   });
   slide.addEventListener('touchstart', (e) => {
-    e.preventDefault();
     pauseProgress();
     getTouchStart(e);
   });
   slide.addEventListener('touchend', (e) => {
-    e.preventDefault();
     swipe(e);
   });
   /*slide.addEventListener('touchmove', (e) => {
